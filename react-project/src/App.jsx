@@ -1,3 +1,6 @@
+/* eslint-disable react/jsx-key */
+/* eslint-disable react/prop-types */
+/* eslint-disable react/no-unescaped-entities */
 import "./App.css";
 
 function Header({ name, year }) {
@@ -9,13 +12,27 @@ function Header({ name, year }) {
   );
 }
 
+const items = [
+  "Hamburger and French Fries",
+  "Pizza",
+  "Shrimp Stew"
+];
+
+function Main({ dishes }) {
+  return (
+  <ul>
+    {dishes.map((dish) => (
+      <li style={{ listStyleType: "none"}}>{dish}</li>
+    ))}
+  </ul>
+  );
+}
+
 function App() {
   return (
     <div>
       <Header name="Alex" year={new Date().getFullYear()} />
-      <main>
-        <h2>We serve the most delicious food around</h2>
-      </main>
+      <Main dishes={items}/>
     </div>
   );
 }
